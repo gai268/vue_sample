@@ -1,0 +1,14 @@
+
+.memo-enter-active, .memo-leave-active {
+    transition: all 0.3s;
+}
+.memo-enter {
+    opacity: 0;
+    transform: translateX(1000px) scale(1.2);
+}
+.memo-leave-to {
+    position: absolute;
+}
+.memo-leave-active {
+    opacity: 0;
+}

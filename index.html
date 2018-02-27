@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://getbootstrap.com/docs/4.0/examples/narrow-jumbotron/narrow-jumbotron.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/4.0/examples/offcanvas/offcanvas.css" rel="stylesheet">
+
+<!-- App CSS -->
+<link href="assets/css/app.animation.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+<div id ="app">
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills float-right">
+            <li class="nav-item">
+                <router-link class="nav-link" exact-active-class="active" to="/">メモ帳</router-link>
+            </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">APP</h3>
+    </div>
+    
+
+</div>
+<main role="main" class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+            <div class="lh-100 ">
+                <h6 class="mb-0 text-white lh-100">
+                    <i class="fa fa-list-alt "></i>　メモ帳
+                </h6>
+            </div>
+        </div>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <transition name="memo">    
+                <router-view></router-view>
+            </transition>
+        </div>
+    </main>
+</div>    
+
+<!--Bootstrap Lib-->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.0/examples/offcanvas/offcanvas.js"></script>
+<script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<!--Moment Lib-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
+
+<!--Vue Lib-->
+<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+<script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script>
+
+<!--App-->
+<script src="src/utils/indexedDBUtil.js"></script>
+<script src="src/dao/Dao.js"></script>
+<script src="src/dao/MemoDao.js"></script>
+<script src="src/components/MemoDetail.js"></script>
+<script src="src/components/MemoItem.js"></script>
+<script src="src/components/MemoList.js"></script>
+<script src="src/components/MemoAddButton.js"></script>
+<script src="src/pages/MemoListPage.js"></script>
+<script src="src/pages/MemoDetailPage.js"></script>
+<script src="src/store.js"></script>
+<script src="src/router.js"></script>
+<script src="src/index.js"></script>
+
+</body>
+</html>

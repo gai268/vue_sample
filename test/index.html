@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Unit Test</title>
+<meta charset="utf-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+</head>
+<body>
+<div id="mocha"></div>
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css">
+<script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+<script>
+    mocha.setup('bdd');
+    window.onload = function(){
+        mocha.run();
+    };
+</script>
+
+<script src="../src/utils/indexedDBUtil.js"></script>
+<script src="../src/dao/Dao.js"></script>
+<script src="../src/dao/MemoDao.js"></script>
+
+<script src="dao/DaoTest.js"></script>
+<script src="dao/MemoDaoTest.js"></script>
+
+</body>
+</html>
