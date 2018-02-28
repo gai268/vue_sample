@@ -6,7 +6,8 @@ const store = new Vuex.Store({
         memoList: [{
             id: 0 ,
             text: "",
-            updatedAt: ""
+            updatedAt: "",
+            checked: false
         }]
     },
     getters: {
@@ -14,26 +15,36 @@ const store = new Vuex.Store({
     },
     mutations: {
         /**
-         * メモ一覧を全削除
+         * ストアのメモ一覧を全削除
          */
         deleteMemoListAll (state){
             state.memoList.splice(0); // 全削除
         },
         /**
-         * メモ一覧に追加
+         * ストアにメモ追加
          */
-        pushMemoList (state, memoDetail){
+        pushMemo (state, memoDetail){
             state.memoList.push(memoDetail);
         },
         /**
-         * メモの更新日を最新にする
+         * ストアのメモの更新日を最新にする
          */
-        updateMemoDetailUpdatedAt (state, id) {
+        updateMemoUpdatedAt (state, id) {
             const memoDetail = state.memoList.find( memo =>  {
                 return parseInt(memo.id) === parseInt(id);
             });
             memoDetail.updatedAt = new Date();
-        }
+        },
+        /**
+         * ストアのメモ削除
+         */
+        removeMemo (state, id){
+            const memoDetail = state.memoList.find( memo =>  {
+                return parseInt(memo.id) === parseInt(id);
+            });
+            const index = state.memoList.indexOf(memoDetail);
+            state.memoList.splice(index,1);
+        },
     },
     actions: {
         /**
@@ -46,10 +57,11 @@ const store = new Vuex.Store({
             const conn = await indexedDBUtil.connect();
             const memoList = await new MemoDao(conn).getAll();
             memoList.forEach(memo => {
-                commit('pushMemoList',{
+                commit('pushMemo',{
                     id: memo.id,
                     text: memo.text,
-                    updatedAt: memo.updatedAt
+                    updatedAt: memo.updatedAt,
+                    checked: false
                 });        
             });
         },
@@ -63,7 +75,7 @@ const store = new Vuex.Store({
 
             if(target){
                 // 更新日時を最新にする
-                commit('updateMemoDetailUpdatedAt', id);
+                commit('updateMemoUpdatedAt', id);
 
                 // indexedDBに保存
                 const conn = await indexedDBUtil.connect();
@@ -77,24 +89,44 @@ const store = new Vuex.Store({
         /**
          * メモの詳細を新規追加する
          */
-        async addMemoDetail ({commit, state}){
+        async addMemoDetail ({commit, state, dispatch}){
             // indexedDBに新規追加
             const conn = await indexedDBUtil.connect();
             const memoDao = new MemoDao(conn);
             const id = await memoDao.add();
-            console.log("id:" + id);
 
             // 追加データをstoreに反映
             const memo = await memoDao.get(id);
-            commit('pushMemoList',{
+            commit('pushMemo',{
                 id: memo.id,
                 text: memo.text,
                 updatedAt: memo.updatedAt
             });
-            // 更新日時を最新にする
-            commit('updateMemoDetailUpdatedAt', id);
 
+            //　更新日付などを再度更新
+            dispatch('updatedMemoDetail',{id});
             return id;
+        },
+        /**
+         * チェックされたメモを削除する
+         */
+        async removeCheckedMemoDetail ({commit, state}){
+            const conn = await indexedDBUtil.connect();
+            const memoDao = new MemoDao(conn);
+            
+            for (var i = 0; i < state.memoList.length; i++) {
+                const memoDetail = state.memoList[i];
+                if(memoDetail.checked){
+                    // indexedDBから削除
+                    await memoDao.delete(memoDetail.id);
+                    // 削除をstoreに反映
+                    commit('removeMemo', memoDetail.id);
+                    // 配列構成変更の為、デクリメントして再度チェックさせる
+                    i--;
+                }
+            }
         }
+
+
     }
 })

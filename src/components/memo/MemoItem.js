@@ -6,15 +6,18 @@ const MemoItem = {
 
     },
     template: `
+    <transition name="fade"> 
     <div class="media text-muted pt-3">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="flex-middle">
+            <input type="checkbox" v-model="memoDetail.checked">
+        </div>
+        <div class="media-body pl-3 pb-3 mb-0 small lh-125 border-bottom border-gray">
             <div class="d-flex justify-content-between align-items-center w-100">
                 <strong class="text-gray-dark">
                     {{ memoDetail.text | excerpt }}
                 </strong> 
                 <router-link v-bind:to="{ 
-                    name:'memoDetailPageLink', 
-                    params:{ id: memoDetail.id }
+                    name:'memoDetailPageLink',params:{ id: memoDetail.id }
                 }">編集</router-link>
             </div>
             <span class="d-block">
@@ -22,6 +25,7 @@ const MemoItem = {
             </span>
         </div>
     </div>
+    </transition>
     `,
     filters: {
         excerpt: function(value){

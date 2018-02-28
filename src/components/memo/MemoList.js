@@ -3,11 +3,9 @@
 const MemoList = {
     template: `
         <div>
-            <memo-item v-if="memoList.length > 0"
-                v-for="memoDetail in memoList" :key="memoDetail.id"
-                :id="memoDetail.id"
-                />
-            <div v-else>No Data</div>
+            <memo-item v-for="memoDetail in memoList" 
+                :key="memoDetail.id" :id="memoDetail.id"/>
+            <div class="media pt-3" v-if="memoList.length === 0">No Data</div>
         </div>
     `,
     components: {

@@ -6,10 +6,12 @@ const MemoDetail = {
     },
     template: `
     <div>
-        <h6 class="border-bottom border-gray pb-2 mb-0">
+        <h6 class="border-bottom border-gray pb-2 mb-6">
         {{memoDetail.updatedAt | formatDate}}
         </h6>
-        <textarea v-model="memoDetail.text"></textarea>
+        <div class="form-group">
+            <textarea rows="10" class="form-control" v-model="memoDetail.text"></textarea>
+        </div>
     </div>
     `,
     watch: {

@@ -29,29 +29,12 @@
         </nav>
         <h3 class="text-muted">APP</h3>
     </div>
-    
-
 </div>
 <main role="main" class="container">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active">Data</li>
-        </ol>
-
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-            <div class="lh-100 ">
-                <h6 class="mb-0 text-white lh-100">
-                    <i class="fa fa-list-alt "></i>　メモ帳
-                </h6>
-            </div>
-        </div>
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-            <transition name="memo">    
-                <router-view></router-view>
-            </transition>
-        </div>
-    </main>
+    <transition name="page">    
+        <router-view></router-view>
+    </transition>
+</main>
 </div>    
 
 <!--Bootstrap Lib-->
@@ -75,12 +58,14 @@
 <script src="src/utils/indexedDBUtil.js"></script>
 <script src="src/dao/Dao.js"></script>
 <script src="src/dao/MemoDao.js"></script>
-<script src="src/components/MemoDetail.js"></script>
-<script src="src/components/MemoItem.js"></script>
-<script src="src/components/MemoList.js"></script>
-<script src="src/components/MemoAddButton.js"></script>
-<script src="src/pages/MemoListPage.js"></script>
-<script src="src/pages/MemoDetailPage.js"></script>
+<script src="src/components/memo/MemoTitle.js"></script>
+<script src="src/components/memo/MemoDetail.js"></script>
+<script src="src/components/memo/MemoItem.js"></script>
+<script src="src/components/memo/MemoList.js"></script>
+<script src="src/components/memo/MemoAddButton.js"></script>
+<script src="src/components/memo/MemoRemoveButton.js"></script>
+<script src="src/pages/memo/MemoListPage.js"></script>
+<script src="src/pages/memo/MemoDetailPage.js"></script>
 <script src="src/store.js"></script>
 <script src="src/router.js"></script>
 <script src="src/index.js"></script>

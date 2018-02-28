@@ -1,14 +1,21 @@
 
-.memo-enter-active, .memo-leave-active {
+.page-enter-active, .memo-leave-active {
     transition: all 0.3s;
 }
-.memo-enter {
+.page-enter {
     opacity: 0;
     transform: translateX(1000px) scale(1.2);
 }
-.memo-leave-to {
+.page-leave-to {
     position: absolute;
 }
-.memo-leave-active {
+.page-leave-active {
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }

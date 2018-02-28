@@ -5,10 +5,16 @@ const MemoDetailPage = {
         id: [Number, String]
     },
     template: `
-        <memo-detail v-if="memoDetail" :id="id">
-        </memo-detail>
+    <div>
+        <memo-title></memo-title>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <memo-detail v-if="memoDetail" :id="id">
+            </memo-detail>
+        </div>
+    </div>
     `,
     components: {
+        "memo-title": MemoTitle,
         "memo-detail": MemoDetail
     },
     computed: {
