@@ -8,7 +8,9 @@ const App = {
                 <nav>
                     <ul class="nav nav-pills float-right">
                     <li class="nav-item">
-                        <router-link class="nav-link" exact-active-class="active" to="/">メモ帳</router-link>
+                        <router-link class="nav-link" exact-active-class="active" to="/">
+                            メモ帳
+                        </router-link>
                     </li>
                     </ul>
                 </nav>

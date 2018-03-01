@@ -8,8 +8,8 @@ const MemoDetailPage = {
     <div>
         <memo-title></memo-title>
         <div class="my-3 p-3 bg-white rounded box-shadow">
-            <memo-detail v-if="memoDetail" :id="id">
-            </memo-detail>
+            <memo-detail v-if="memoDetail" :id="id"/>
+            <div v-else>既に削除されているか、存在しないメモです。</div>
         </div>
     </div>
     `,

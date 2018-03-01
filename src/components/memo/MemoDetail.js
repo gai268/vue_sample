@@ -7,7 +7,7 @@ const MemoDetail = {
     template: `
     <div>
         <h6 class="border-bottom border-gray pb-2 mb-6">
-        {{memoDetail.updatedAt | formatDate}}
+            {{memoDetail.updatedAt | formatDate}}
         </h6>
         <div class="form-group">
             <textarea rows="10" class="form-control" v-model="memoDetail.text"></textarea>
