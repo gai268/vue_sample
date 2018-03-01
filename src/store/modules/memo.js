@@ -1,7 +1,6 @@
 "use strict";
 
-Vue.use(Vuex)
-const store = new Vuex.Store({
+const memoStore = {
     state: {
         memoList: [{
             id: 0 ,
@@ -126,7 +125,5 @@ const store = new Vuex.Store({
                 }
             }
         }
-
-
     }
-})
+}
