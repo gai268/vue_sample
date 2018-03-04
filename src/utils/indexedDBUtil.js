@@ -13,13 +13,13 @@ class indexedDBUtil{
         const IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.mozIDBTransaction;
 
         return new Promise((resolve, reject) => {
-            var db = null;
-            var tran = null;
-            var reqOpen = indexedDB.open(dbName,version);
+            let db = null;
+            let tran = null;
+            let reqOpen = indexedDB.open(dbName,version);
 
             reqOpen.onupgradeneeded = function(e) {
                 db = e.target.result;
-                for(var key in schema){
+                for(let key in schema){
                     db.createObjectStore(key, schema[key]);
                 }
                 resolve(e.target);

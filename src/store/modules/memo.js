@@ -113,7 +113,7 @@ const memoStore = {
             const conn = await indexedDBUtil.connect();
             const memoDao = new MemoDao(conn);
             
-            for (var i = 0; i < state.memoList.length; i++) {
+            for (let i = 0; i < state.memoList.length; i++) {
                 const memoDetail = state.memoList[i];
                 if(memoDetail.checked){
                     // indexedDBから削除

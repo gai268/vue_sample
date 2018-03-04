@@ -2,7 +2,7 @@
 
 describe('オブジェクトストアMemoの操作', () => {
     it('全データが削除できること', () => {
-        var dao = null;
+        let dao = null;
 
         const inputData = { text: "add test" };    
         return indexedDBUtil.connect()
@@ -10,7 +10,7 @@ describe('オブジェクトストアMemoの操作', () => {
             .then( ()       => dao.add(inputData) )
             .then( ()       => dao.getAll() )
             .then( result   => {
-                for(var key in result){
+                for(let key in result){
                     dao.delete(result[key].id)
                 }
             })
